@@ -1,0 +1,7 @@
+Changelog file for ForcedPasswdChange component.
+
+
+ForcedPasswdChange 1.0.0-pl
+====================================
+
+- Initial commit
