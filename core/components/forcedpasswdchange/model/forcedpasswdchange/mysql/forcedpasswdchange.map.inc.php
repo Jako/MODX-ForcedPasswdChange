@@ -1,7 +1,9 @@
 <?php
 $xpdo_meta_map['forcedPasswdChange']= array (
   'package' => 'forcedpasswdchange',
+  'version' => NULL,
   'table' => 'forcedpasswdchange',
+  'extends' => 'xPDOSimpleObject',
   'fields' => 
   array (
     'user' => NULL,

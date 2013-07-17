@@ -1,7 +1,16 @@
 Changelog file for ForcedPasswdChange component.
 
 
+ForcedPasswdChange 1.0.1-pl
+====================================
+- Better styling for the checkbox of Forced Password Change
+    Now visible in the "New password" fieldset section of the user create/edit
+- Fixed loading Forced Password window on Manager login
+- Fixed loading lexicons the right way
+- Passed processor to the new MODX 2.2.x style (classes)
+- Removed support for MODX 2.1.x and older (sorry folks!)
+
+
 ForcedPasswdChange 1.0.0-pl
 ====================================
-
 - Initial commit

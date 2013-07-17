@@ -1,42 +1,43 @@
 Ext.onReady(function() {
 	
 	var ForcedPasswdChangeWindow = new MODx.Window({
-		title: ForcedPasswdChange.lang['fpc.newpasswd'],
+		title: _('fpc.newpasswd'),
 		id: 'forcedpasswdchange_window',
 		labelWidth: 150,
 		closable: false,
 		collapsible: false,
 		maximizable: false,
 		modal: true,
+        width: 350,
 		fields: [{
-			html: '<p>' + ForcedPasswdChange.lang['fpc.newpasswd.desc'] + '</p><br />'
+			html: '<p>' + _('fpc.newpasswd.desc') + '</p><br />'
 		},{
 			xtype: 'textfield',
 			inputType: 'password',
-			fieldLabel: ForcedPasswdChange.lang['fpc.oldpasswd'],
+			fieldLabel: _('fpc.oldpasswd'),
 			id: 'fpc_password_old',
 			name: 'password_old',
-			width: 200,
-			allowBlank: false
+            anchor: '100%',
+            allowBlank: false
 		},{
 			xtype: 'textfield',
 			inputType: 'password',
-			fieldLabel: ForcedPasswdChange.lang['fpc.newpasswd'],
+			fieldLabel: _('fpc.newpasswd'),
 			id: 'fpc_password_new',
 			name: 'password_new',
-			width: 200,
-			allowBlank: false
+            anchor: '100%',
+            allowBlank: false
 		},{
 			xtype: 'textfield',
 			inputType: 'password',
-			fieldLabel: ForcedPasswdChange.lang['fpc.confirmpasswd'],
+			fieldLabel: _('fpc.confirmpasswd'),
 			id: 'fpc_password_new_confirm',
 			name: 'password_new_confirm',
-			width: 200,
-			allowBlank: false
+            anchor: '100%',
+            allowBlank: false
 		}],
 		buttons: [{
-			text: ForcedPasswdChange.lang['fpc.change'],
+			text: _('fpc.change'),
 			handler: function() {
 				
 				var passwdOld = Ext.getCmp('fpc_password_old').getValue();
@@ -49,19 +50,13 @@ Ext.onReady(function() {
 				
 				MODx.Ajax.request({
 					url: ForcedPasswdChange.config.connector_url,
-					params: {
-						action: 'mgr/passwdchange',
-						oldpwd: passwdOld,
-						nwpwd: passwdNew,
-						nwpwdc: passwdNewConf
-					},
+					params: { action: 'mgr/passwdchange', oldpwd: passwdOld, nwpwd: passwdNew, nwpwdc: passwdNewConf },
 					listeners: {
 						'success': {
 							fn: function(r) {
-								
 								Ext.Msg.show({
-									title: ForcedPasswdChange.lang['fpc.passwordchanged'],
-									msg: ForcedPasswdChange.lang['fpc.passwordchanged.success'],
+									title: _('fpc.passwordchanged'),
+									msg: _('fpc.passwordchanged.success'),
 									buttons: Ext.Msg.OK,
 									fn: function(btn) {
 										ForcedPasswdChangeWindow.hide();
@@ -80,39 +75,3 @@ Ext.onReady(function() {
 	
 	ForcedPasswdChangeWindow.show(Ext.getBody());
 });
-
-/*
-ForcedPasswdChange.window.ChangeWindow = function(config) {
-	config = config || {};
-	Ext.applyIf(config,{
-		title: ForcedPasswdChange.lang['fpc.newpasswd'],
-		labelWidth: 150,
-		closable: false,
-		collapsible: false,
-		draggable: false,
-		maximizable: false,
-		modal: true,
-		fields: [{
-			html: '<p>' + ForcedPasswdChange.lang['fpc.newpasswd.desc'] + '</p><br />'
-		},{
-			xtype: 'textfield',
-			inputType: 'password',
-			fieldLabel: ForcedPasswdChange.lang['fpc.newpasswd'],
-			name: 'password_new',
-			width: 200,
-			allowBlank: false
-		},{
-			xtype: 'textfield',
-			inputType: 'password',
-			fieldLabel: ForcedPasswdChange.lang['fpc.confirmpasswd'],
-			name: 'password_new_confirm',
-			width: 200,
-			allowBlank: false
-		}]
-	});
-	
-	ForcedPasswdChange.window.ChangeWindow.superclass.constructor.call(this,config);
-};
-Ext.extend(ForcedPasswdChange.window.ChangeWindow, MODx.Window);
-Ext.reg('forcedpasswdchange-window-changewindow', ForcedPasswdChange.window.ChangeWindow);
-*/

@@ -2,9 +2,9 @@
 
 $plugins = array(
 	'ForcedPasswdChange' => array(
-		'OnManagerPageInit',
-		'OnUserFormRender',
-		'OnUserSave'
+		'OnManagerPageBeforeRender',
+		'OnUserFormPrerender',
+		'OnUserFormSave'
 	)
 );
 

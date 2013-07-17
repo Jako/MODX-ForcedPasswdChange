@@ -2,7 +2,7 @@
 Extra: ForcedPasswdChange
 --------------------
 
-Version: 1.0.0-rc1
+Version: 1.0.1-pl
  
 With the ForcedPasswdChange you can create or update an user and 
 activate the forced change of their password in the Manager. When 

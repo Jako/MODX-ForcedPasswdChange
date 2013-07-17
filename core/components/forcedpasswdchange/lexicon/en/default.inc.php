@@ -15,7 +15,10 @@ $_lang['fpc.confirmpasswd'] = "Confirm password";
 $_lang['fpc.change'] = "Change password";
 $_lang['fpc.passwordchanged'] = "Password changed";
 $_lang['fpc.passwordchanged.success'] = "Your password is succussfully changed!";
-$_lang['fpc.forcepasswordchange'] = "Force user to change password at login!";
+
+$_lang['fpc.forcepasswordchange'] = "Forced Password Change";
+$_lang['fpc.forcepasswordchange.yes'] = "Yes! Force user to change password at login, the first time!";
+$_lang['fpc.forcepasswordchange.desc'] = "This will popup a window at first time login and the user has no ability to close the window.<br />The user is forced to change his password first.";
 
 $_lang['fpc.error.user_nf'] = "The user to change the password for not found!";
 $_lang['fpc.error.oldpwd_iv'] = "The old password is empty or doesn't match!";

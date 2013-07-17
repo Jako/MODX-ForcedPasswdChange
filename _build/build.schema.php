@@ -16,7 +16,7 @@ $modx = new modX();
 $modx->initialize('mgr');
 $modx->loadClass('transport.modPackageBuilder','',false, true);
 $modx->setLogLevel(modX::LOG_LEVEL_INFO);
-$modx->setLogTarget('ECHO');
+$modx->setLogTarget(XPDO_CLI_MODE ? 'ECHO' : 'HTML');
 
 $sources = array(
     'model' => MODX_CORE_PATH.'components/'.PKG_NAME_LOWER.'/model/',
@@ -25,16 +25,8 @@ $sources = array(
 $manager = $modx->getManager();
 $generator = $manager->getGenerator();
  
-if(!is_dir($sources['model'])) {
-	$modx->log(modX::LOG_LEVEL_ERROR,'Model directory not found!');
-	die();
-}
-
-if(!file_exists($sources['schema_file'])) {
-	$modx->log(modX::LOG_LEVEL_ERROR,'Schema file not found!');
-	die();
-}
-
+if(!is_dir($sources['model'])) { $modx->log(modX::LOG_LEVEL_ERROR,'Model directory not found!'); die(); }
+if(!file_exists($sources['schema_file'])) { $modx->log(modX::LOG_LEVEL_ERROR,'Schema file not found!'); die(); }
 $generator->parseSchema($sources['schema_file'], $sources['model']);
 
 $modx->addPackage(PKG_NAME_LOWER, $sources['model']);

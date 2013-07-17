@@ -1,39 +1,30 @@
 <?php
-/**
- * The ForcedPasswdChange object
- *
- * @package forcedpasswdchange
- */
-class FPC {
 
-	/**
-     * Constructs the object
-     *
-     * @param modX &$modx A reference to the modX object
-     * @param array $config An array of configuration options
-     */
-    function __construct(modX &$modx, array $config=array()) {
-		$this->modx =& $modx;
+class FPC
+{
+	public $modx;
+    public $config = array();
 
-		$namespace = $this->modx->getObject('modNamespace', 'forcedpasswdchange');
+    function __construct(modX &$modx,array $config = array()) {
+        $this->modx =& $modx;
 
-		$basePath = $namespace->get('path');
-		$assetsUrl = $this->modx->getOption('assets_url').'components/forcedpasswdchange/';
-		
-		$this->config = array_merge(array(
-			'basePath' => $basePath,
-			'corePath' => $basePath,
-			'modelPath' => $basePath.'model/',
-			'processorsPath' => $basePath.'processors/',
-			'chunksPath' => $basePath.'elements/chunks/',
-			'jsUrl' => $assetsUrl.'js/',
-			'cssUrl' => $assetsUrl.'css/',
-			'assetsUrl' => $assetsUrl,
-			'connectorUrl' => $assetsUrl.'connector.php',
-		), $config);
+		$basePath = $this->modx->getOption('forcedpasswdchange.core_path',$config,$this->modx->getOption('core_path').'components/forcedpasswdchange/');
+        $assetsUrl = $this->modx->getOption('forcedpasswdchange.assets_url',$config,$this->modx->getOption('assets_url').'components/forcedpasswdchange/');
+
+        $this->config = array_merge(array(
+            'basePath' => $basePath,
+            'corePath' => $basePath,
+            'modelPath' => $basePath.'model/',
+            'processorsPath' => $basePath.'processors/',
+            'templatesPath' => $basePath.'templates/',
+            'chunksPath' => $basePath.'elements/chunks/',
+            'jsUrl' => $assetsUrl.'js/',
+            'cssUrl' => $assetsUrl.'css/',
+            'assetsUrl' => $assetsUrl,
+            'connectorUrl' => $assetsUrl.'connector.php',
+        ),$config);
 
 		$this->modx->addPackage('forcedpasswdchange', $this->config['modelPath']);
-		$this->modx->lexicon->load('forcedpasswdchange:default');
 	}
 }
 
