@@ -8,8 +8,13 @@ switch($options[xPDOTransport::PACKAGE_ACTION]) {
 		$modx->addPackage('forcedpasswdchange', $modelPath);
 		
 		$manager = $modx->getManager();
-		
-		$manager->createObjectContainer('forcedPasswdChange');
+
+		$oldLogLevel = $modx->getLogLevel();
+        $modx->setLogLevel(0);
+
+        $manager->createObjectContainer('forcedPasswdChange');
+
+        $modx->setLogLevel($oldLogLevel);
 	break;
 }
 
